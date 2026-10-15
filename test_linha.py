@@ -3,7 +3,7 @@ import os
 import tempfile
 import unittest
 
-from linha import ler_linha, tempo_ate
+from linha import ler_linha, rota_ida_e_volta, tempo_ate
 
 LINHA = [
     {"estacao": "Luz", "minutos_ate_proxima": 3},
@@ -35,6 +35,24 @@ class TestLerLinha(unittest.TestCase):
             linha = ler_linha(caminho)
             self.assertEqual(linha[0], {"estacao": "Luz", "minutos_ate_proxima": 3})
             self.assertEqual(len(linha), 2)
+
+
+class TestRotaIdaEVolta(unittest.TestCase):
+    def test_ida_com_append_e_volta_com_pop(self):
+        rota = rota_ida_e_volta(LINHA, "Paulista")
+        self.assertEqual(rota["ida"], ["Luz", "República", "Paulista"])
+        self.assertEqual(rota["volta"], ["Paulista", "República", "Luz"])
+        self.assertEqual(rota["minutos_ida"], 6)
+        self.assertEqual(rota["minutos_ida_volta"], 12)
+
+    def test_base_tem_rota_vazia_de_minutos(self):
+        rota = rota_ida_e_volta(LINHA, "Luz")
+        self.assertEqual(rota["ida"], ["Luz"])
+        self.assertEqual(rota["minutos_ida_volta"], 0)
+
+    def test_estacao_inexistente(self):
+        with self.assertRaises(ValueError):
+            rota_ida_e_volta(LINHA, "Sé")
 
 
 if __name__ == "__main__":
