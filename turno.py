@@ -1,4 +1,4 @@
-"""Atividade 3: plano do turno com filas (FIFO) e agenda (pilha).
+"""Plano do turno com filas (FIFO) e agenda (pilha).
 
 A fila crítica é atendida antes da normal. Cada escada entra na agenda
 se couber no tempo do turno; se não couber, vai para os pendentes.

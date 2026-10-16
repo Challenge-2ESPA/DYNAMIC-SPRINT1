@@ -1,4 +1,4 @@
-"""Testes da Atividade 3. Rodar: python -m unittest discover -s tests -v"""
+"""Testes do turno. Rodar: python -m unittest discover -s tests -v"""
 
 import unittest
 
