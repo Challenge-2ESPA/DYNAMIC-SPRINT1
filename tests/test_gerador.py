@@ -1,4 +1,4 @@
-# Testes da Etapa 0 (gerador).
+# Testes do gerador de dados. Rodar: python -m unittest discover -s tests -v
 import os
 import tempfile
 import unittest

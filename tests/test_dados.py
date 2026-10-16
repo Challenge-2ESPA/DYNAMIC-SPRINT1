@@ -1,4 +1,4 @@
-# Testes da regra de alerta. Rodar: python -m unittest test_dados -v
+# Testes da regra de alerta. Rodar: python -m unittest discover -s tests -v
 import unittest
 
 from dados import esta_em_alerta

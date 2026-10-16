@@ -1,4 +1,4 @@
-# Testes das buscas. Rodar: python -m unittest test_busca -v
+# Testes das buscas. Rodar: python -m unittest discover -s tests -v
 import unittest
 
 from busca import (acumular, busca_binaria, busca_linear, ordenar_ids,

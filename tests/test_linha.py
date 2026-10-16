@@ -1,4 +1,4 @@
-# Testes do percurso na linha. Rodar: python -m unittest test_linha -v
+# Testes do percurso na linha. Rodar: python -m unittest discover -s tests -v
 import os
 import tempfile
 import unittest

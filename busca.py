@@ -1,10 +1,16 @@
-#  busca linear e busca binaria.
-# Cada comparacao de chave conta como 1 (o == e o < contam separadamente).
+"""Busca linear e busca binária, escritas à mão.
+
+Cada comparação de chave conta como 1. Na busca binária, o `==` e o `<`
+são contados separadamente, porque são duas comparações por passo.
+"""
 
 
-def busca_linear(lista, alvo, chave):
-    # Percorre a lista do inicio ao fim. Nao exige lista ordenada.
-    comparacoes = 0
+def busca_linear(lista: list[dict], alvo: str, chave: str) -> tuple[int, int]:
+    """Retorna (posição, comparações) do primeiro item cuja chave é igual ao alvo.
+
+    Não exige lista ordenada. Se não achar, a posição é -1.
+    """
+    comparacoes: int = 0
     for posicao, item in enumerate(lista):
         comparacoes += 1
         if item[chave] == alvo:
@@ -12,13 +18,16 @@ def busca_linear(lista, alvo, chave):
     return -1, comparacoes
 
 
-def busca_binaria(lista, alvo, chave):
-    # Exige lista ordenada pela chave. Divide o intervalo ao meio a cada passo.
-    comparacoes = 0
-    inicio = 0
-    fim = len(lista) - 1
+def busca_binaria(lista: list[dict], alvo: str, chave: str) -> tuple[int, int]:
+    """Retorna (posição, comparações) usando divisão ao meio.
+
+    Exige lista ordenada pela chave. Se não achar, a posição é -1.
+    """
+    comparacoes: int = 0
+    inicio: int = 0
+    fim: int = len(lista) - 1
     while inicio <= fim:
-        meio = (inicio + fim) // 2
+        meio: int = (inicio + fim) // 2
         valor = lista[meio][chave]
 
         comparacoes += 1
@@ -33,11 +42,13 @@ def busca_binaria(lista, alvo, chave):
     return -1, comparacoes
 
 
-def primeira_leitura_linear(alertas, limite):
-    # alertas: lista de 0 ou 1 por leitura, em ordem de horario.
-    # Devolve o indice da primeira leitura em que o acumulado chega ao limite.
-    acumulado = 0
-    comparacoes = 0
+def primeira_leitura_linear(alertas: list[int], limite: int) -> tuple[int, int]:
+    """Retorna (índice, comparações) da primeira posição em que o acumulado chega ao limite.
+
+    alertas: 0 ou 1 por leitura, na ordem de horário. Se não chegar, o índice é -1.
+    """
+    acumulado: int = 0
+    comparacoes: int = 0
     for indice, alerta in enumerate(alertas):
         acumulado += alerta
         comparacoes += 1
@@ -46,15 +57,18 @@ def primeira_leitura_linear(alertas, limite):
     return -1, comparacoes
 
 
-def primeira_leitura_binaria(acumulados, limite):
-    # acumulados: soma acumulada de alertas (nunca diminui), entao a busca binaria
-    # acha o primeiro indice em que o valor chega ao limite.
-    inicio = 0
-    fim = len(acumulados) - 1
-    resposta = -1
-    comparacoes = 0
+def primeira_leitura_binaria(acumulados: list[int], limite: int) -> tuple[int, int]:
+    """Retorna (índice, comparações) da primeira posição em que o acumulado chega ao limite.
+
+    acumulados: soma acumulada de alertas. Ela nunca diminui, então a busca binária
+    encontra a primeira posição em que o valor atinge o limite.
+    """
+    inicio: int = 0
+    fim: int = len(acumulados) - 1
+    resposta: int = -1
+    comparacoes: int = 0
     while inicio <= fim:
-        meio = (inicio + fim) // 2
+        meio: int = (inicio + fim) // 2
         comparacoes += 1
         if acumulados[meio] >= limite:
             resposta = meio
@@ -64,16 +78,16 @@ def primeira_leitura_binaria(acumulados, limite):
     return resposta, comparacoes
 
 
-def acumular(alertas):
-    # Soma acumulada dos alertas, em uma passagem.
-    acumulados = []
-    total = 0
+def acumular(alertas: list[int]) -> list[int]:
+    """Retorna a soma acumulada dos alertas, em uma única passagem."""
+    acumulados: list[int] = []
+    total: int = 0
     for alerta in alertas:
         total += alerta
         acumulados.append(total)
     return acumulados
 
 
-def ordenar_ids(ids):
-    # Ordena os IDs pelo numero (ESC-2 vem antes de ESC-10).
+def ordenar_ids(ids: list[str]) -> list[str]:
+    """Retorna os IDs ordenados pelo número, para que ESC-2 venha antes de ESC-10."""
     return sorted(ids, key=lambda id_escada: int(id_escada.split("-")[1]))
