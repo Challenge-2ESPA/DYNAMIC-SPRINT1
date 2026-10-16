@@ -1,0 +1,2524 @@
+{
+  "4h": {
+    "plano": {
+      "base": "Luz",
+      "horas": 4,
+      "limite_min": 240,
+      "tempo_usado_min": 214,
+      "agenda": [
+        {
+          "id_escada": "ESC-19",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 0,
+          "fim_min": 82
+        },
+        {
+          "id_escada": "ESC-34",
+          "grupo": "crítica",
+          "estacao": "Luz",
+          "rota_ida": [
+            "Luz"
+          ],
+          "rota_volta": [
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 60,
+          "inicio_min": 82,
+          "fim_min": 142
+        },
+        {
+          "id_escada": "ESC-24",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72,
+          "inicio_min": 142,
+          "fim_min": 214
+        }
+      ],
+      "pendentes": [
+        {
+          "id_escada": "ESC-15",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82
+        },
+        {
+          "id_escada": "ESC-30",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-16",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-31",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-42",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-50",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-37",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-6",
+          "grupo": "crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 66
+        },
+        {
+          "id_escada": "ESC-36",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        },
+        {
+          "id_escada": "ESC-25",
+          "grupo": "não crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 62
+        },
+        {
+          "id_escada": "ESC-23",
+          "grupo": "não crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 52
+        },
+        {
+          "id_escada": "ESC-11",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-21",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-26",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-32",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-33",
+          "grupo": "não crítica",
+          "estacao": "Vila Sônia",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã",
+            "Vila Sônia"
+          ],
+          "rota_volta": [
+            "Vila Sônia",
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 80
+        },
+        {
+          "id_escada": "ESC-40",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        }
+      ]
+    },
+    "se_perder_1_hora": {
+      "base": "Luz",
+      "horas": 3,
+      "limite_min": 180,
+      "tempo_usado_min": 142,
+      "agenda": [
+        {
+          "id_escada": "ESC-19",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 0,
+          "fim_min": 82
+        },
+        {
+          "id_escada": "ESC-34",
+          "grupo": "crítica",
+          "estacao": "Luz",
+          "rota_ida": [
+            "Luz"
+          ],
+          "rota_volta": [
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 60,
+          "inicio_min": 82,
+          "fim_min": 142
+        }
+      ],
+      "pendentes": [
+        {
+          "id_escada": "ESC-15",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82
+        },
+        {
+          "id_escada": "ESC-30",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-16",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-31",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-42",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-50",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-37",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-6",
+          "grupo": "crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 66
+        },
+        {
+          "id_escada": "ESC-36",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        },
+        {
+          "id_escada": "ESC-25",
+          "grupo": "não crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 62
+        },
+        {
+          "id_escada": "ESC-23",
+          "grupo": "não crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 52
+        },
+        {
+          "id_escada": "ESC-11",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-21",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-26",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-32",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-33",
+          "grupo": "não crítica",
+          "estacao": "Vila Sônia",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã",
+            "Vila Sônia"
+          ],
+          "rota_volta": [
+            "Vila Sônia",
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 80
+        },
+        {
+          "id_escada": "ESC-40",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        },
+        {
+          "id_escada": "ESC-24",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72,
+          "inicio_min": 142,
+          "fim_min": 214
+        }
+      ]
+    }
+  },
+  "6h": {
+    "plano": {
+      "base": "Luz",
+      "horas": 6,
+      "limite_min": 360,
+      "tempo_usado_min": 342,
+      "agenda": [
+        {
+          "id_escada": "ESC-19",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 0,
+          "fim_min": 82
+        },
+        {
+          "id_escada": "ESC-34",
+          "grupo": "crítica",
+          "estacao": "Luz",
+          "rota_ida": [
+            "Luz"
+          ],
+          "rota_volta": [
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 60,
+          "inicio_min": 82,
+          "fim_min": 142
+        },
+        {
+          "id_escada": "ESC-24",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72,
+          "inicio_min": 142,
+          "fim_min": 214
+        },
+        {
+          "id_escada": "ESC-15",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 214,
+          "fim_min": 296
+        },
+        {
+          "id_escada": "ESC-36",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46,
+          "inicio_min": 296,
+          "fim_min": 342
+        }
+      ],
+      "pendentes": [
+        {
+          "id_escada": "ESC-30",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-16",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-31",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-42",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-50",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-37",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-6",
+          "grupo": "crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 66
+        },
+        {
+          "id_escada": "ESC-25",
+          "grupo": "não crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 62
+        },
+        {
+          "id_escada": "ESC-23",
+          "grupo": "não crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 52
+        },
+        {
+          "id_escada": "ESC-11",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-21",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-26",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-32",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-33",
+          "grupo": "não crítica",
+          "estacao": "Vila Sônia",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã",
+            "Vila Sônia"
+          ],
+          "rota_volta": [
+            "Vila Sônia",
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 80
+        },
+        {
+          "id_escada": "ESC-40",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        }
+      ]
+    },
+    "se_perder_1_hora": {
+      "base": "Luz",
+      "horas": 5,
+      "limite_min": 300,
+      "tempo_usado_min": 296,
+      "agenda": [
+        {
+          "id_escada": "ESC-19",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 0,
+          "fim_min": 82
+        },
+        {
+          "id_escada": "ESC-34",
+          "grupo": "crítica",
+          "estacao": "Luz",
+          "rota_ida": [
+            "Luz"
+          ],
+          "rota_volta": [
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 60,
+          "inicio_min": 82,
+          "fim_min": 142
+        },
+        {
+          "id_escada": "ESC-24",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72,
+          "inicio_min": 142,
+          "fim_min": 214
+        },
+        {
+          "id_escada": "ESC-15",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 214,
+          "fim_min": 296
+        }
+      ],
+      "pendentes": [
+        {
+          "id_escada": "ESC-30",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-16",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-31",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-42",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-50",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-37",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-6",
+          "grupo": "crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 66
+        },
+        {
+          "id_escada": "ESC-25",
+          "grupo": "não crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 62
+        },
+        {
+          "id_escada": "ESC-23",
+          "grupo": "não crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 52
+        },
+        {
+          "id_escada": "ESC-11",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-21",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-26",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-32",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-33",
+          "grupo": "não crítica",
+          "estacao": "Vila Sônia",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã",
+            "Vila Sônia"
+          ],
+          "rota_volta": [
+            "Vila Sônia",
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 80
+        },
+        {
+          "id_escada": "ESC-40",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        },
+        {
+          "id_escada": "ESC-36",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46,
+          "inicio_min": 296,
+          "fim_min": 342
+        }
+      ]
+    }
+  },
+  "8h": {
+    "plano": {
+      "base": "Luz",
+      "horas": 8,
+      "limite_min": 480,
+      "tempo_usado_min": 456,
+      "agenda": [
+        {
+          "id_escada": "ESC-19",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 0,
+          "fim_min": 82
+        },
+        {
+          "id_escada": "ESC-34",
+          "grupo": "crítica",
+          "estacao": "Luz",
+          "rota_ida": [
+            "Luz"
+          ],
+          "rota_volta": [
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 60,
+          "inicio_min": 82,
+          "fim_min": 142
+        },
+        {
+          "id_escada": "ESC-24",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72,
+          "inicio_min": 142,
+          "fim_min": 214
+        },
+        {
+          "id_escada": "ESC-15",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 214,
+          "fim_min": 296
+        },
+        {
+          "id_escada": "ESC-30",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72,
+          "inicio_min": 296,
+          "fim_min": 368
+        },
+        {
+          "id_escada": "ESC-16",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88,
+          "inicio_min": 368,
+          "fim_min": 456
+        }
+      ],
+      "pendentes": [
+        {
+          "id_escada": "ESC-31",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-42",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-50",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-37",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-6",
+          "grupo": "crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 66
+        },
+        {
+          "id_escada": "ESC-36",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        },
+        {
+          "id_escada": "ESC-25",
+          "grupo": "não crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 62
+        },
+        {
+          "id_escada": "ESC-23",
+          "grupo": "não crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 52
+        },
+        {
+          "id_escada": "ESC-11",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-21",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-26",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-32",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-33",
+          "grupo": "não crítica",
+          "estacao": "Vila Sônia",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã",
+            "Vila Sônia"
+          ],
+          "rota_volta": [
+            "Vila Sônia",
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 80
+        },
+        {
+          "id_escada": "ESC-40",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        }
+      ]
+    },
+    "se_perder_1_hora": {
+      "base": "Luz",
+      "horas": 7,
+      "limite_min": 420,
+      "tempo_usado_min": 368,
+      "agenda": [
+        {
+          "id_escada": "ESC-19",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 0,
+          "fim_min": 82
+        },
+        {
+          "id_escada": "ESC-34",
+          "grupo": "crítica",
+          "estacao": "Luz",
+          "rota_ida": [
+            "Luz"
+          ],
+          "rota_volta": [
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 60,
+          "inicio_min": 82,
+          "fim_min": 142
+        },
+        {
+          "id_escada": "ESC-24",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72,
+          "inicio_min": 142,
+          "fim_min": 214
+        },
+        {
+          "id_escada": "ESC-15",
+          "grupo": "crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 82,
+          "inicio_min": 214,
+          "fim_min": 296
+        },
+        {
+          "id_escada": "ESC-30",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72,
+          "inicio_min": 296,
+          "fim_min": 368
+        }
+      ],
+      "pendentes": [
+        {
+          "id_escada": "ESC-31",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-42",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88
+        },
+        {
+          "id_escada": "ESC-50",
+          "grupo": "crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 72
+        },
+        {
+          "id_escada": "ESC-37",
+          "grupo": "crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 94
+        },
+        {
+          "id_escada": "ESC-6",
+          "grupo": "crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 66
+        },
+        {
+          "id_escada": "ESC-36",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        },
+        {
+          "id_escada": "ESC-25",
+          "grupo": "não crítica",
+          "estacao": "Faria Lima",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima"
+          ],
+          "rota_volta": [
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 62
+        },
+        {
+          "id_escada": "ESC-23",
+          "grupo": "não crítica",
+          "estacao": "Paulista",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista"
+          ],
+          "rota_volta": [
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 52
+        },
+        {
+          "id_escada": "ESC-11",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-21",
+          "grupo": "não crítica",
+          "estacao": "Oscar Freire",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire"
+          ],
+          "rota_volta": [
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 56
+        },
+        {
+          "id_escada": "ESC-26",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-32",
+          "grupo": "não crítica",
+          "estacao": "Butantã",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã"
+          ],
+          "rota_volta": [
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 74
+        },
+        {
+          "id_escada": "ESC-33",
+          "grupo": "não crítica",
+          "estacao": "Vila Sônia",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros",
+            "Butantã",
+            "Vila Sônia"
+          ],
+          "rota_volta": [
+            "Vila Sônia",
+            "Butantã",
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 80
+        },
+        {
+          "id_escada": "ESC-40",
+          "grupo": "não crítica",
+          "estacao": "República",
+          "rota_ida": [
+            "Luz",
+            "República"
+          ],
+          "rota_volta": [
+            "República",
+            "Luz"
+          ],
+          "servico_min": 40,
+          "custo_min": 46
+        },
+        {
+          "id_escada": "ESC-16",
+          "grupo": "crítica",
+          "estacao": "Pinheiros",
+          "rota_ida": [
+            "Luz",
+            "República",
+            "Paulista",
+            "Oscar Freire",
+            "Faria Lima",
+            "Pinheiros"
+          ],
+          "rota_volta": [
+            "Pinheiros",
+            "Faria Lima",
+            "Oscar Freire",
+            "Paulista",
+            "República",
+            "Luz"
+          ],
+          "servico_min": 60,
+          "custo_min": 88,
+          "inicio_min": 368,
+          "fim_min": 456
+        }
+      ]
+    }
+  }
+}
