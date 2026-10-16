@@ -83,6 +83,12 @@ class TestPlanejarTurno(unittest.TestCase):
         self.assertEqual(plano["pendentes"], [])
         self.assertEqual(plano["tempo_usado_min"], 0)
 
+    def test_sem_argumentos_le_os_arquivos_padrao(self):
+        # Roda a partir da pasta do projeto, onde estão linha.csv e sensores.csv
+        plano = planejar_turno("Luz", 4)
+        self.assertEqual(plano["limite_min"], 240)
+        self.assertEqual(len(plano["agenda"]) + len(plano["pendentes"]), 20)
+
 
 class TestPerderHora(unittest.TestCase):
     def test_limite_cai_uma_hora(self):

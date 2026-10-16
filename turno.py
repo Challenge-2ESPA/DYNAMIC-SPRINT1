@@ -4,11 +4,14 @@ A fila crítica é atendida antes da normal. Cada escada entra na agenda
 se couber no tempo do turno; se não couber, vai para os pendentes.
 """
 
-from linha import rota_ida_e_volta
+from dados import carregar_escadas_em_alerta
+from linha import ler_linha, rota_ida_e_volta
 
 TEMPO_SERVICO_CRITICA: int = 60  # minutos
 TEMPO_SERVICO_NORMAL: int = 40   # minutos
 MINUTOS_POR_HORA: int = 60
+CAMINHO_LINHA: str = "linha.csv"
+CAMINHO_SENSORES: str = "sensores.csv"
 
 
 def montar_filas(escadas_em_alerta: list[dict]) -> tuple[list[dict], list[dict]]:
@@ -52,13 +55,20 @@ def custo_atendimento(linha: list[dict], escada: dict) -> dict:
 def planejar_turno(
     base: str,
     horas: int,
-    linha: list[dict],
-    escadas_em_alerta: list[dict],
+    linha: list[dict] | None = None,
+    escadas_em_alerta: list[dict] | None = None,
 ) -> dict:
     """Retorna o plano do turno: agenda, pendentes e tempo usado.
 
     base: nome da estação-base, que precisa ser a primeira da linha.
+    linha e escadas_em_alerta são opcionais. Se não forem passados, lê os arquivos
+    linha.csv e sensores.csv da pasta atual. Quem testa pode passar dados de exemplo.
     """
+    if linha is None:
+        linha = ler_linha(CAMINHO_LINHA)
+    if escadas_em_alerta is None:
+        escadas_em_alerta = carregar_escadas_em_alerta(CAMINHO_SENSORES)
+
     if linha[0]["estacao"] != base:
         raise ValueError("A base precisa ser a primeira estação da linha")
 

@@ -35,7 +35,7 @@ Também existe o notebook `SPRINT1notebook.ipynb`, que roda as mesmas análises 
 | Arquivo | O que faz |
 |---|---|
 | `gerar_dataset.py` | Gera o dataset sintético de sensores e grava `sensores.csv`. |
-| `dados.py` | Lê o `sensores.csv` e define a regra de alerta: uma leitura está em alerta se algum sensor sai da faixa normal. |
+| `dados.py` | Lê o `sensores.csv`, define a regra de alerta (uma leitura está em alerta se algum sensor sai da faixa normal) e monta a lista de escadas em alerta. |
 | `busca.py` | Busca linear, busca binária, primeira leitura com o limite de alertas, soma acumulada e ordenação dos IDs. |
 | `linha.py` | Lê a linha de estações e calcula o tempo até cada uma, com a rota de ida e volta usando pilha. |
 | `turno.py` | Monta as filas de atendimento e planeja o turno, com a simulação da perda de 1 hora. |
@@ -214,6 +214,8 @@ As escadas são organizadas em duas filas, na ordem do primeiro alerta (ou seja,
 Usamos fila porque o atendimento segue a ordem de chegada dentro de cada grupo: quem alertou primeiro é atendido primeiro.
 
 ### Planejamento do turno
+
+A função `planejar_turno(base, horas)` gera o plano. Ela lê sozinha a linha (`linha.csv`) e as escadas em alerta (`sensores.csv`), mas também aceita esses dados como argumentos opcionais. Assim, os testes podem usar dados de exemplo, sem depender dos arquivos.
 
 O turno tem 4, 6 ou 8 horas, ou seja, 240, 360 ou 480 minutos. Para cada escada, na ordem das filas:
 

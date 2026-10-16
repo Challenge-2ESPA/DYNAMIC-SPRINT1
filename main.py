@@ -14,7 +14,7 @@ import time
 
 from busca import (acumular, busca_binaria, busca_linear, ordenar_ids,
                    primeira_leitura_binaria, primeira_leitura_linear)
-from dados import esta_em_alerta, ler_leituras
+from dados import agrupar_por_escada, escadas_em_alerta, esta_em_alerta, ler_leituras
 from linha import ler_linha, rota_ida_e_volta, tempo_ate
 from turno import perder_hora, planejar_turno
 
@@ -22,31 +22,6 @@ SEMENTE_CONSULTAS: int = 42
 N_CONSULTAS: int = 1000
 LIMITE_ALERTAS: int = 5
 HORAS_DO_TURNO: tuple[int, ...] = (4, 6, 8)
-
-
-def agrupar_por_escada(leituras: list[dict]) -> dict[str, list[dict]]:
-    """Retorna as leituras de cada escada, em ordem de horário."""
-    por_escada: dict[str, list[dict]] = {}
-    for leitura in leituras:
-        por_escada.setdefault(leitura["id_escada"], []).append(leitura)
-    for leituras_da_escada in por_escada.values():
-        leituras_da_escada.sort(key=lambda leitura: leitura["data_hora"])
-    return por_escada
-
-
-def escadas_em_alerta(por_escada: dict[str, list[dict]]) -> list[dict]:
-    """Retorna as escadas com algum alerta, com a estação, o grupo e a data do primeiro alerta."""
-    encontradas: list[dict] = []
-    for id_escada, leituras_da_escada in por_escada.items():
-        primeiro = next((l for l in leituras_da_escada if esta_em_alerta(l)), None)
-        if primeiro is not None:
-            encontradas.append({
-                "id_escada": id_escada,
-                "estacao": primeiro["estacao"],
-                "grupo": primeiro["grupo"],
-                "primeiro_alerta": primeiro["data_hora"],
-            })
-    return encontradas
 
 
 def sortear_consultas(ids_ordenados: list[str], quantidade: int, semente: int) -> list[str]:
