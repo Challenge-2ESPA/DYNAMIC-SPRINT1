@@ -2,7 +2,7 @@
 
 import unittest
 
-from turno import (custo_atendimento, montar_filas, perder_hora,
+from turno import (custo_atendimento, formatar_hora, montar_filas, perder_hora,
                    planejar_turno, tempo_de_servico)
 
 LINHA: list[dict] = [
@@ -21,6 +21,12 @@ class TestTempoDeServico(unittest.TestCase):
     def test_critica_e_normal(self):
         self.assertEqual(tempo_de_servico("crítica"), 60)
         self.assertEqual(tempo_de_servico("não crítica"), 40)
+
+
+class TestFormatarHora(unittest.TestCase):
+    def test_turno_comeca_as_8(self):
+        self.assertEqual(formatar_hora(0), "08:00")
+        self.assertEqual(formatar_hora(95), "09:35")
 
 
 class TestMontarFilas(unittest.TestCase):
@@ -120,6 +126,18 @@ class TestPerderHora(unittest.TestCase):
         perder_hora(plano)
         self.assertEqual(len(plano["agenda"]), 3)
         self.assertEqual(plano["limite_min"], 240)
+
+    def test_desfeito_vai_para_pendentes_sem_horario(self):
+        em_alerta = [escada("ESC-%d" % i, "Paulista", "crítica", "2026-01-01 00:00") for i in range(1, 5)]
+        depois = perder_hora(planejar_turno("Luz", 4, LINHA, em_alerta))
+        desfeito = depois["pendentes"][-1]
+        self.assertEqual(desfeito["id_escada"], "ESC-3")
+        self.assertNotIn("inicio", desfeito)
+
+    def test_agenda_tem_inicio_e_fim_em_horario(self):
+        em_alerta = [escada("ESC-1", "Paulista", "crítica", "2026-01-01 00:00")]
+        item = planejar_turno("Luz", 4, LINHA, em_alerta)["agenda"][0]
+        self.assertEqual((item["inicio"], item["fim"]), ("08:00", "09:12"))
 
 
 if __name__ == "__main__":

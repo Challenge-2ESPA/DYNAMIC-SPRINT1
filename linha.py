@@ -38,11 +38,13 @@ def rota_ida_e_volta(linha: list[dict], estacao: str) -> dict:
     A ida empilha cada estação. A volta desempilha, começando no destino e terminando na base.
     Levanta ValueError se a estação não existir na linha.
     """
-    pilha: list[str] = []
+    pilha: list[dict] = []
+    ida: list[str] = []
     minutos_ida: int = 0
     encontrou: bool = False
     for registro in linha:
-        pilha.append(registro["estacao"])
+        pilha.append(registro)
+        ida.append(registro["estacao"])
         if registro["estacao"] == estacao:
             encontrou = True
             break
@@ -51,14 +53,17 @@ def rota_ida_e_volta(linha: list[dict], estacao: str) -> dict:
     if not encontrou:
         raise ValueError(f"Estação '{estacao}' não existe na linha")
 
-    ida: list[str] = list(pilha)  # copia a rota de ida antes de desempilhar
-    volta: list[str] = []
+    volta: list[str] = [pilha.pop()["estacao"]]
+    minutos_volta: int = 0
     while pilha:
-        volta.append(pilha.pop())
+        anterior = pilha.pop()
+        minutos_volta += anterior["minutos_ate_proxima"]
+        volta.append(anterior["estacao"])
 
     return {
         "ida": ida,
         "volta": volta,
         "minutos_ida": minutos_ida,
-        "minutos_ida_volta": minutos_ida * 2,
+        "minutos_volta": minutos_volta,
+        "minutos_ida_volta": minutos_ida + minutos_volta,
     }

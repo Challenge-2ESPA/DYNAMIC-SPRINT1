@@ -10,6 +10,7 @@ from linha import ler_linha, rota_ida_e_volta
 TEMPO_SERVICO_CRITICA: int = 60  # minutos
 TEMPO_SERVICO_NORMAL: int = 40   # minutos
 MINUTOS_POR_HORA: int = 60
+INICIO_DO_TURNO_MIN: int = 8 * MINUTOS_POR_HORA
 CAMINHO_LINHA: str = "linha.csv"
 CAMINHO_SENSORES: str = "sensores.csv"
 
@@ -37,6 +38,11 @@ def tempo_de_servico(grupo: str) -> int:
     return TEMPO_SERVICO_NORMAL
 
 
+def formatar_hora(minutos_desde_inicio: int) -> str:
+    total = INICIO_DO_TURNO_MIN + minutos_desde_inicio
+    return f"{total // MINUTOS_POR_HORA:02d}:{total % MINUTOS_POR_HORA:02d}"
+
+
 def custo_atendimento(linha: list[dict], escada: dict) -> dict:
     """Retorna a rota e o custo (ida + serviço + volta) de uma escada."""
     servico = tempo_de_servico(escada["grupo"])
@@ -47,8 +53,10 @@ def custo_atendimento(linha: list[dict], escada: dict) -> dict:
         "estacao": escada["estacao"],
         "rota_ida": rota["ida"],
         "rota_volta": rota["volta"],
+        "minutos_ida": rota["minutos_ida"],
         "servico_min": servico,
-        "custo_min": rota["minutos_ida_volta"] + servico,
+        "minutos_volta": rota["minutos_volta"],
+        "custo_min": rota["minutos_ida"] + servico + rota["minutos_volta"],
     }
 
 
@@ -86,6 +94,8 @@ def planejar_turno(
             if tempo_usado + custo <= limite:
                 atendimento["inicio_min"] = tempo_usado
                 atendimento["fim_min"] = tempo_usado + custo
+                atendimento["inicio"] = formatar_hora(tempo_usado)
+                atendimento["fim"] = formatar_hora(tempo_usado + custo)
                 agenda.append(atendimento)
                 tempo_usado += custo
             else:
@@ -112,8 +122,11 @@ def perder_hora(plano: dict) -> dict:
     tempo_usado = plano["tempo_usado_min"]
 
     while tempo_usado > novo_limite and agenda:
-        desfeito = agenda.pop()
+        desfeito = dict(agenda.pop())
         tempo_usado -= desfeito["custo_min"]
+        for campo in ("inicio_min", "fim_min", "inicio", "fim"):
+            desfeito.pop(campo, None)
+        desfeito["desfeito_por_perda_de_hora"] = True
         pendentes.append(desfeito)
 
     return {

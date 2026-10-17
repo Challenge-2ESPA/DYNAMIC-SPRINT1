@@ -25,6 +25,12 @@ class TestBuscaBinaria(unittest.TestCase):
         lista = [{"id": "ESC-1"}, {"id": "ESC-3"}]
         self.assertEqual(busca_binaria(lista, "ESC-2", "id")[0], -1)
 
+    def test_acha_todos_os_ids_do_dataset(self):
+        ids = ordenar_ids(["ESC-%03d" % i for i in range(197, 0, -1)])
+        lista = [{"id": i} for i in ids]
+        for posicao, alvo in enumerate(ids):
+            self.assertEqual(busca_binaria(lista, alvo, "id")[0], posicao)
+
     def test_faz_menos_comparacoes_que_linear(self):
         lista = [{"id": "ESC-%d" % i} for i in range(1, 101)]
         _, c_lin = busca_linear(lista, "ESC-100", "id")

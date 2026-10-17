@@ -45,6 +45,11 @@ class TestRotaIdaEVolta(unittest.TestCase):
         self.assertEqual(rota["minutos_ida"], 6)
         self.assertEqual(rota["minutos_ida_volta"], 12)
 
+    def test_volta_somada_no_pop_igual_a_ida(self):
+        rota = rota_ida_e_volta(LINHA, "Pinheiros")
+        self.assertEqual(rota["minutos_volta"], rota["minutos_ida"])
+        self.assertEqual(rota["volta"], list(reversed(rota["ida"])))
+
     def test_base_tem_rota_vazia_de_minutos(self):
         rota = rota_ida_e_volta(LINHA, "Luz")
         self.assertEqual(rota["ida"], ["Luz"])

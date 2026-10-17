@@ -38,9 +38,13 @@ def comparar_buscas_por_id(
     """Retorna, para cada consulta, as comparações de cada método."""
     linhas: list[dict] = []
     for numero, alvo in enumerate(consultas, start=1):
-        _, comp_linear_arquivo = busca_linear(leituras, alvo, "id_escada")
-        _, comp_linear_ids = busca_linear(lista_ordenada, alvo, "id")
-        _, comp_binaria = busca_binaria(lista_ordenada, alvo, "id")
+        pos_arquivo, comp_linear_arquivo = busca_linear(leituras, alvo, "id_escada")
+        pos_ids, comp_linear_ids = busca_linear(lista_ordenada, alvo, "id")
+        pos_bin, comp_binaria = busca_binaria(lista_ordenada, alvo, "id")
+        if pos_arquivo < 0 or leituras[pos_arquivo]["id_escada"] != alvo:
+            raise AssertionError(f"Busca linear no arquivo não achou {alvo}")
+        if pos_ids < 0 or pos_bin != pos_ids:
+            raise AssertionError(f"Busca binária não achou {alvo} na mesma posição da linear")
         linhas.append({
             "consulta": numero,
             "id_escada": alvo,
@@ -91,6 +95,7 @@ def comparar_primeira_leitura(
             "data_hora": data_hora,
             "comp_linear": comp_linear,
             "comp_binaria": comp_binaria,
+            "passos_montar_acumulado": len(acumulados),
         })
     return linhas
 
@@ -120,6 +125,30 @@ def planos_dos_turnos(linha: list[dict], em_alerta: list[dict]) -> dict[str, dic
             "se_perder_1_hora": perder_hora(plano),
         }
     return planos
+
+
+def planos_em_linhas(planos: dict[str, dict]) -> list[dict]:
+    linhas: list[dict] = []
+    for nome, dados in planos.items():
+        for cenario, plano in (("turno completo", dados["plano"]),
+                               ("perdeu 1 hora", dados["se_perder_1_hora"])):
+            for situacao, lista in (("agenda", plano["agenda"]), ("pendente", plano["pendentes"])):
+                for ordem, item in enumerate(lista, start=1):
+                    linhas.append({
+                        "turno": nome,
+                        "cenario": cenario,
+                        "situacao": situacao,
+                        "ordem": ordem,
+                        "id_escada": item["id_escada"],
+                        "grupo": item["grupo"],
+                        "estacao": item["estacao"],
+                        "rota_ida": " > ".join(item["rota_ida"]),
+                        "rota_volta": " > ".join(item["rota_volta"]),
+                        "custo_min": item["custo_min"],
+                        "inicio": item.get("inicio", ""),
+                        "fim": item.get("fim", ""),
+                    })
+    return linhas
 
 
 def salvar_csv(caminho: str, linhas: list[dict]) -> None:
@@ -165,7 +194,7 @@ def main(caminho_sensores: str, caminho_linha: str, pasta_saida: str) -> None:
     tempos = tempos_da_base(linha)
     print(f"\nPercurso a partir da base {linha[0]['estacao']}")
     for item in tempos:
-        print(f"  {item['estacao']:14} ida {item['minutos_ida']:>3} min | ida e volta {item['minutos_ida_volta']:>3} min")
+        print(f"  {item['estacao']:22} ida {item['minutos_ida']:>3} min | ida e volta {item['minutos_ida_volta']:>3} min")
     salvar_csv(os.path.join(pasta_saida, "tempos_base.csv"), tempos)
 
     em_alerta = escadas_em_alerta(por_escada)
@@ -178,6 +207,7 @@ def main(caminho_sensores: str, caminho_linha: str, pasta_saida: str) -> None:
               f"{plano['tempo_usado_min']} de {plano['limite_min']} min | "
               f"perdendo 1 h: {len(desfeito['agenda'])} na agenda")
     salvar_json(os.path.join(pasta_saida, "planos_turno.json"), planos)
+    salvar_csv(os.path.join(pasta_saida, "planos_turno.csv"), planos_em_linhas(planos))
 
     print(f"\nArquivos gravados em: {pasta_saida}")
 

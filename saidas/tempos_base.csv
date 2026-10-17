@@ -1,9 +1,12 @@
 estacao,minutos_ida,minutos_ida_volta
 Luz,0,0
-República,3,6
+República,2,4
+Higienópolis-Mackenzie,4,8
 Paulista,6,12
 Oscar Freire,8,16
-Faria Lima,11,22
+Fradique Coutinho,10,20
+Faria Lima,12,24
 Pinheiros,14,28
 Butantã,17,34
-Vila Sônia,20,40
+São Paulo-Morumbi,20,40
+Vila Sônia,23,46

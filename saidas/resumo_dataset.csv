@@ -1,0 +1,12 @@
+tipo,item,minimo,media,maximo,quantidade
+sensor,vibracao,1.0,3.13,9.78,
+sensor,temperatura,35.0,53.14,89.2,
+sensor,corrente,10.0,17.47,25.0,
+sensor,tensao,361.0,380.11,399.0,
+sensor,nivel_oleo,30.6,75.73,100.0,
+sensor,velocidade,0.48,0.5,0.52,
+perfil,saudavel,,,,30
+perfil,desgaste,,,,15
+perfil,falha,,,,5
+grupo,crítica,,,,24
+grupo,não crítica,,,,26

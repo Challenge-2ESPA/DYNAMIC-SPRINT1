@@ -5,11 +5,17 @@ As funções calculam e retornam. Só o bloco principal imprime e grava o arquiv
 """
 
 import csv
+import os
 import random
 from datetime import datetime, timedelta
 
-ESTACOES: list[str] = ["Luz", "República", "Paulista", "Oscar Freire", "Faria Lima",
-                       "Pinheiros", "Butantã", "Vila Sônia"]
+ESTACOES: list[str] = ["Luz", "República", "Higienópolis-Mackenzie", "Paulista",
+                       "Oscar Freire", "Fradique Coutinho", "Faria Lima", "Pinheiros",
+                       "Butantã", "São Paulo-Morumbi", "Vila Sônia"]
+
+MIN_ESCADAS: int = 30
+MAX_ESCADAS: int = 197
+MIN_LEITURAS: int = 200
 
 # Faixas normais de cada sensor: (mínimo, máximo)
 FAIXAS: dict[str, tuple[float, float]] = {
@@ -42,6 +48,11 @@ def gerar_dataset(
     Cada escada recebe uma leitura por hora. Em cada hora, a ordem das escadas é
     embaralhada, como acontece num registro real.
     """
+    if not (MIN_ESCADAS <= n_escadas <= MAX_ESCADAS):
+        raise ValueError(f"n_escadas precisa estar entre {MIN_ESCADAS} e {MAX_ESCADAS}")
+    if n_leituras < MIN_LEITURAS:
+        raise ValueError(f"n_leituras precisa ser pelo menos {MIN_LEITURAS}")
+
     random.seed(semente)
 
     # 1) Perfil de cada escada: 60% saudável, 30% desgaste, 10% falha
@@ -56,7 +67,7 @@ def gerar_dataset(
     escadas: list[dict] = []
     for i in range(n_escadas):
         escada: dict = {
-            "id_escada": "ESC-" + str(i + 1),
+            "id_escada": f"ESC-{i + 1:03d}",
             "estacao": random.choice(ESTACOES),
             "grupo": random.choice(["crítica", "não crítica"]),
             "perfil": perfis[i],
@@ -127,12 +138,15 @@ def resumir_dataset(leituras: list[dict], escadas: list[dict]) -> dict:
         }
 
     perfis: dict[str, int] = {"saudavel": 0, "desgaste": 0, "falha": 0}
+    grupos: dict[str, int] = {"crítica": 0, "não crítica": 0}
     for escada in escadas:
         perfis[escada["perfil"]] += 1
+        grupos[escada["grupo"]] += 1
 
     return {
         "sensores": sensores,
         "perfis": perfis,
+        "grupos": grupos,
         "total_leituras": len(leituras),
     }
 
@@ -150,5 +164,22 @@ if __name__ == "__main__":
     for perfil, quantidade in resumo["perfis"].items():
         print(f"{perfil:10}: {quantidade} escadas")
 
+    print("\n===== ESCADAS POR GRUPO =====")
+    for grupo, quantidade in resumo["grupos"].items():
+        print(f"{grupo:12}: {quantidade} escadas")
+
     print(f"\nTotal de leituras: {resumo['total_leituras']}")
-    print("\nArquivo sensores.csv salvo!")
+
+    os.makedirs("saidas", exist_ok=True)
+    with open(os.path.join("saidas", "resumo_dataset.csv"), "w", newline="", encoding="utf-8") as arquivo:
+        escritor = csv.writer(arquivo)
+        escritor.writerow(["tipo", "item", "minimo", "media", "maximo", "quantidade"])
+        for sensor, valores in resumo["sensores"].items():
+            escritor.writerow(["sensor", sensor, valores["minimo"], round(valores["media"], 2),
+                               valores["maximo"], ""])
+        for perfil, quantidade in resumo["perfis"].items():
+            escritor.writerow(["perfil", perfil, "", "", "", quantidade])
+        for grupo, quantidade in resumo["grupos"].items():
+            escritor.writerow(["grupo", grupo, "", "", "", quantidade])
+
+    print("\nArquivos sensores.csv e saidas/resumo_dataset.csv salvos!")

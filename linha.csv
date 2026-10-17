@@ -1,9 +1,12 @@
 ordem,estacao,minutos_ate_proxima
-1,Luz,3
-2,República,3
-3,Paulista,2
-4,Oscar Freire,3
-5,Faria Lima,3
-6,Pinheiros,3
-7,Butantã,3
-8,Vila Sônia,0
+1,Luz,2
+2,República,2
+3,Higienópolis-Mackenzie,2
+4,Paulista,2
+5,Oscar Freire,2
+6,Fradique Coutinho,2
+7,Faria Lima,2
+8,Pinheiros,3
+9,Butantã,3
+10,São Paulo-Morumbi,3
+11,Vila Sônia,0
