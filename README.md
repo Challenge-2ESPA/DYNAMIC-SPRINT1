@@ -1,6 +1,8 @@
-# Challenge Motiva: Dynamic Programming (DP), Sprints 1 e 2
+# Desafio Motiva — Escadas rolantes (Dynamic Programming, Sprint 1)
 
-Este projeto resolve a parte de programação (DP) do Challenge Motiva. A Motiva opera escadas rolantes nas estações da linha e quer reduzir o custo de manutenção preventiva, identificando quais escadas precisam de atenção antes de falhar.
+Este projeto resolve a parte de Dynamic Programming do Challenge Motiva. A Motiva (ViaQuatro, Linha 4-Amarela) opera escadas rolantes nas estações e quer reduzir o custo de manutenção, identificando quais escadas precisam de atenção antes de falhar e planejando o atendimento da equipe.
+
+Tudo foi feito em **Python puro**: buscas linear e binária escritas à mão, fila e pilha feitas com listas (`append`, `pop(0)`, `pop()`). Não usamos grafos, `deque` nem bibliotecas prontas de busca.
 
 ## Integrantes
 
@@ -14,275 +16,262 @@ Este projeto resolve a parte de programação (DP) do Challenge Motiva. A Motiva
 
 ## Aviso sobre os dados
 
-Os dados são **fictícios**, gerados por `gerar_dataset.py` com uma semente fixa. As premissas de tempo entre estações e de tempo de serviço são suposições do grupo, não medições da Motiva. Por isso, os resultados mostram como o método funciona e o que os números significam, não a situação real da operação.
+Os dados são **fictícios**, gerados por `gerar_dataset.py` com semente fixa. Os minutos entre estações, o tempo de serviço e o horário do turno são **premissas do grupo**, não medições da Motiva. Os resultados mostram como os métodos funcionam e o que os números significam, não a situação real da operação.
 
 ## Como executar
 
-Rode a partir da pasta do projeto:
+Na pasta do projeto:
 
 ```bash
-python gerar_dataset.py                       # gera sensores.csv (semente 42)
-python main.py sensores.csv linha.csv saidas  # roda todas as análises e grava os resultados em saidas/
-python -m unittest discover -s tests -v       # roda os testes automáticos
+python gerar_dataset.py                       # gera sensores.csv e saidas/resumo_dataset.csv (semente 42)
+python main.py sensores.csv linha.csv saidas  # roda as três atividades e grava os resultados em saidas/
+python -m unittest discover -s tests -v       # roda os 51 testes automáticos
 ```
 
-O `main.py` roda em menos de 1 segundo. O `gerar_dataset.py` gera o mesmo `sensores.csv` sempre que rodado, porque a semente é fixa.
+O `notebook.ipynb` roda tudo passo a passo, com explicação e interpretação em cada etapa, e já está **executado** (com as saídas salvas). Para rodar no Colab, envie para a pasta de trabalho os arquivos `.py` e o `linha.csv`.
 
-Também existe o notebook `SPRINT1notebook.ipynb`, que roda as mesmas análises passo a passo, com explicação em cada parte. Ele foi executado no Google Colab.
+## Onde está cada requisito do enunciado
+
+| Requisito | Onde está |
+|---|---|
+| `gerar_dataset(n_escadas, n_leituras, semente)` com `random.seed(semente)` | `gerar_dataset.py` |
+| 30 a 197 escadas, ≥ 200 leituras por escada, 1 por hora, escadas embaralhadas | `gerar_dataset.py` (a função recusa valores fora dos limites) |
+| Colunas e faixas normais pedidas | `COLUNAS` e `FAIXAS` em `gerar_dataset.py` |
+| Perfis 60% / 30% / 10% | `gerar_dataset.py` (30 / 15 / 5 escadas) |
+| Entrega 1: função, `sensores.csv` e resumo | `sensores.csv`, `saidas/resumo_dataset.csv`, notebook (Etapa 0) |
+| `busca_linear` e `busca_binaria` à mão, contando comparações | `busca.py` |
+| 1.000 consultas por ID (linear no arquivo × binária na lista ordenada) | `main.py` → `saidas/comparacoes_consultas.csv` e `comparacoes_resumo.csv` |
+| Primeira leitura com 5 alertas acumulados, com as duas buscas | `busca.py` → `saidas/comparacoes_primeira_leitura.csv` |
+| `linha.csv` com ≥ 8 estações em ordem, base na primeira posição | `linha.csv` (11 estações da Linha 4-Amarela) |
+| `tempo_ate` com busca linear e `rota_ida_e_volta` com pilha | `linha.py` |
+| `tempos_base.csv` (estação, minutos de ida, minutos de ida e volta) | `saidas/tempos_base.csv` |
+| `planejar_turno(base, horas)` com `fila_critica` e `fila_normal`, `pop(0)`, agenda e pendentes | `turno.py` |
+| Perda de 1 hora desfazendo a agenda com `pop()` | `perder_hora` em `turno.py` |
+| Plano de 4, 6 e 8 h (escada, estação, rota, início e fim) com pendentes | `saidas/planos_turno.csv`, `saidas/planos_turno.json`, notebook (Atividade 3) |
+| Notebook executado, dados e README | `notebook.ipynb`, `sensores.csv`, `linha.csv`, `saidas/`, este arquivo |
 
 ## Estrutura do projeto
 
 | Arquivo | O que faz |
 |---|---|
-| `gerar_dataset.py` | Gera o dataset sintético de sensores e grava `sensores.csv`. |
-| `dados.py` | Lê o `sensores.csv`, define a regra de alerta (uma leitura está em alerta se algum sensor sai da faixa normal) e monta a lista de escadas em alerta. |
-| `busca.py` | Busca linear, busca binária, primeira leitura com o limite de alertas, soma acumulada e ordenação dos IDs. |
-| `linha.py` | Lê a linha de estações e calcula o tempo até cada uma, com a rota de ida e volta usando pilha. |
-| `turno.py` | Monta as filas de atendimento e planeja o turno, com a simulação da perda de 1 hora. |
-| `main.py` | Liga tudo. Roda todas as análises, imprime o resumo e grava os resultados em `saidas/`. |
-| `linha.csv` | Premissa da linha: as 8 estações, na ordem, com os minutos até a próxima. |
+| `gerar_dataset.py` | Gera o dataset sintético, grava `sensores.csv` e o resumo. |
+| `dados.py` | Lê o `sensores.csv`, define a regra de alerta e monta a lista de escadas em alerta. |
+| `busca.py` | Busca linear, busca binária, primeira leitura com o limite de alertas e soma acumulada. |
+| `linha.py` | Lê a linha, calcula o tempo até cada estação e a rota de ida e volta com pilha. |
+| `turno.py` | Monta as filas, planeja o turno e simula a perda de 1 hora. |
+| `main.py` | Liga tudo: roda as análises, confere os resultados e grava os arquivos em `saidas/`. |
+| `notebook.ipynb` | Notebook executado, com explicação e interpretação de cada etapa. |
+| `linha.csv` | As 11 estações da Linha 4-Amarela, em ordem, com os minutos até a seguinte. |
 | `sensores.csv` | Dataset gerado: 10.000 leituras de 50 escadas. |
-| `saidas/` | Resultados gerados pelo `main.py` (CSV e JSON), usados nas tabelas deste README. |
-| `tests/` | Testes automáticos de cada módulo (40 testes). |
-| `SPRINT1notebook.ipynb` | Notebook que roda as análises com explicação. |
+| `saidas/` | Resultados (CSV e JSON) usados nas tabelas deste README. |
+| `tests/` | 51 testes automáticos, um arquivo por módulo. |
 
-A divisão em vários arquivos foi uma escolha do grupo, para separar cada análise e facilitar a leitura e a correção. Cada módulo tem uma responsabilidade clara. As funções calculam e retornam valores. Só o `main.py` e o bloco principal do `gerar_dataset.py` imprimem na tela e gravam arquivos.
+Dividimos o código em módulos para separar cada atividade e facilitar a leitura e a correção. As funções calculam e retornam valores; só o `main.py`, o bloco principal do `gerar_dataset.py` e o notebook imprimem e gravam arquivos.
 
-## Dataset sintético
+---
 
-### Por que um dataset sintético
+## Etapa 0 - Dataset sintético
 
-A Motiva ainda não forneceu dados reais de sensores. Por isso, criamos um dataset que imita o comportamento esperado de uma escada rolante, com faixas normais por sensor e três situações de operação.
+### Regras da geração
 
-### Como os dados são gerados
+- **Semente: 42.** `random.seed(semente)` é chamado no começo, então o arquivo sai igual toda vez.
+- **Tamanho:** 50 escadas × 200 leituras = 10.000 leituras. A função aceita de 30 a 197 escadas e pelo menos 200 leituras (fora disso, levanta `ValueError`).
+- **Tempo:** uma leitura por hora para cada escada, a partir de 01/01/2026 00:00, em ordem de horário.
+- **Ordem no arquivo:** dentro de cada hora, a ordem das escadas é embaralhada, como num registro real.
+- **Escadas:** IDs `ESC-001` a `ESC-050` (com 3 dígitos — ver a Atividade 1), cada uma numa das 11 estações da linha e sorteada como **crítica** ou **não crítica**.
+- **Colunas:** `id_escada, estacao, grupo, data_hora, vibracao, temperatura, corrente, tensao, nivel_oleo, velocidade`.
+- **Faixas normais:** vibração 1–4 mm/s · temperatura 35–65 °C · corrente 10–25 A · tensão 361–399 V · óleo 60–100 % · velocidade 0,48–0,52 m/s.
+- **Perfis:**
+  - **Saudável (60%, 30 escadas):** todos os sensores sorteados dentro da faixa normal.
+  - **Desgaste gradual (30%, 15 escadas):** a vibração sobe até +4 mm/s, a temperatura até +20 °C e o óleo cai até −30 pontos, de forma proporcional às horas que passam.
+  - **Falha pontual (10%, 5 escadas):** normal na maior parte do tempo, mas cada leitura tem 5% de chance de um pico de vibração (7–10 mm/s) e temperatura (75–90 °C).
 
-- **Escadas:** 50 escadas, cada uma em uma estação, com grupo "crítica" ou "não crítica" sorteado.
-- **Leituras:** uma leitura por hora para cada escada, durante 200 horas, começando em 01/01/2026 às 00:00. Total: 10.000 leituras.
-- **Sensores:** vibração, temperatura, corrente, tensão, nível de óleo e velocidade. Cada um tem uma faixa normal, definida em `FAIXAS` no `gerar_dataset.py`.
-- **Perfis:** 60% das escadas são saudáveis (30 escadas), 30% estão em desgaste (15 escadas) e 10% têm falha pontual (5 escadas).
-  - **Saudável:** todos os sensores ficam dentro da faixa normal, com valores sorteados ao acaso.
-  - **Desgaste:** a vibração sobe até 4 unidades, a temperatura sobe até 20 °C e o nível de óleo cai até 30 pontos, de forma gradual, conforme as horas passam.
-  - **Falha:** na maioria das horas, a escada é normal, mas cada leitura tem 5% de chance de um pico isolado de vibração (7 a 10) e temperatura (75 a 90).
-- **Ordem:** em cada hora, a ordem das escadas é embaralhada, como aconteceria num registro real.
-- **Semente:** 42. A semente fixa faz o sorteio ser igual toda vez que o gerador roda.
+### Resumo (Entrega 1)
 
-### Resumo do dataset
+| Sensor | Faixa normal | Mínimo | Média | Máximo |
+|---|---|---|---|---|
+| Vibração (mm/s) | 1–4 | 1,00 | 3,13 | 9,78 |
+| Temperatura (°C) | 35–65 | 35,0 | 53,14 | 89,2 |
+| Corrente (A) | 10–25 | 10,00 | 17,47 | 25,00 |
+| Tensão (V) | 361–399 | 361,0 | 380,11 | 399,0 |
+| Nível de óleo (%) | 60–100 | 30,6 | 75,73 | 100,0 |
+| Velocidade (m/s) | 0,48–0,52 | 0,48 | 0,50 | 0,52 |
 
-| Sensor | Mínimo | Média | Máximo |
-|---|---|---|---|
-| Vibração (mm/s) | 1,00 | 3,13 | 10,00 |
-| Temperatura (°C) | 35,00 | 53,16 | 89,90 |
-| Corrente (A) | 10,00 | 17,48 | 25,00 |
-| Tensão (V) | 361,00 | 379,84 | 399,00 |
-| Nível de óleo (%) | 30,60 | 75,47 | 100,00 |
-| Velocidade (m/s) | 0,48 | 0,50 | 0,52 |
+| Perfil | Escadas | | Grupo | Escadas |
+|---|---|---|---|---|
+| Saudável | 30 | | Crítica | 24 |
+| Desgaste | 15 | | Não crítica | 26 |
+| Falha pontual | 5 | | | |
 
-Os valores acima da faixa normal vêm dos perfis de desgaste e de falha, não de erro no código.
+**Interpretação.** Corrente, tensão e velocidade ficam sempre dentro da faixa, porque nenhum perfil mexe nelas. Os valores fora da faixa (vibração até 9,78, temperatura até 89,2, óleo até 30,6) vêm dos perfis de desgaste e de falha, não de erro no código. A média de vibração (3,13) fica acima do meio da faixa (2,5) por causa das escadas em desgaste.
 
 ### Regra de alerta
 
-Uma leitura está em alerta quando **qualquer** sensor sai da faixa normal. O limite conta como normal: vibração de exatamente 4 não dispara alerta. A função `esta_em_alerta`, em `dados.py`, faz essa verificação, e os testes cobrem o caso do limite.
+Uma leitura está **em alerta** quando **qualquer** sensor sai da faixa normal. O limite conta como normal (vibração de exatamente 4,0 não alerta). A função é `esta_em_alerta`, em `dados.py`. Com essa regra, as escadas que têm alerta são as 15 em desgaste e as 5 com falha; as 30 saudáveis nunca saem da faixa.
 
-Como os perfis funcionam, as escadas em alerta são as 15 de desgaste e as 5 de falha. As 30 saudáveis nunca saem da faixa.
+---
 
-## Busca linear × busca binária
-
-### O problema
-
-Precisamos encontrar informações sobre escadas e leituras no arquivo de sensores. A pergunta é: qual método é mais eficiente para isso? Medimos o custo de cada busca pelo **número de comparações** de chave. Esse número independe do computador e permite comparar os métodos de forma justa.
+## Atividade 1 - Busca linear × busca binária
 
 ### Métodos
 
-- **Busca linear** (`busca_linear`): percorre a lista do início ao fim, comparando um item por vez, até achar o alvo. Não exige lista ordenada, mas o custo cresce com o tamanho da lista.
-- **Busca binária** (`busca_binaria`): divide a lista ao meio a cada passo e descarta a metade que não pode conter o alvo. Exige lista ordenada. Cada passo faz duas comparações: primeiro checa se é igual, depois se é menor. Por isso, o código conta essas duas separadamente.
+- **`busca_linear`:** percorre a lista do começo ao fim. 1 comparação por item. Não precisa de lista ordenada.
+- **`busca_binaria`:** olha o meio da lista e descarta a metade que não pode ter o alvo. Precisa de lista ordenada. Contamos **2 comparações por passo** (`==` e `<`).
 
-Para as consultas, sorteamos 1.000 IDs de escada com a semente 42. Assim, todos os métodos buscam exatamente os mesmos IDs. Testamos três situações:
+### Parte A - localizar escadas pelo ID (1.000 consultas)
 
-1. busca linear no arquivo de leituras;
-2. busca linear em uma lista com só os IDs;
-3. busca binária na lista de IDs, ordenada pelo número (`ESC-2` vem antes de `ESC-10`).
-
-### Primeira leitura com 5 alertas
-
-Para cada escada, procuramos a primeira leitura em que o número acumulado de alertas chega a 5.
-
-- **Linear:** conta os alertas um a um, até o acumulado chegar a 5 (`primeira_leitura_linear`).
-- **Binária:** a soma acumulada de alertas nunca diminui. Por isso, a busca binária pode ser feita sobre essa soma, achando o primeiro ponto em que o valor atinge 5 (`primeira_leitura_binaria`).
-
-Antes de contar, o código confere se os dois métodos acham a mesma posição. Se não acharem, o programa para com erro. Esse teste garante que a busca binária sobre o acumulado está correta.
-
-### Resultados
-
-Consultas por ID (1.000 consultas):
+Sorteamos 1.000 IDs com semente 42 e procuramos cada um de três formas. O `main.py` **confere** se cada busca achou a escada certa e se a binária achou a mesma posição da linear; se não, o programa para com erro.
 
 | Método | Total de comparações | Média | Máximo |
 |---|---|---|---|
-| Linear no arquivo de leituras | 26.305 | 26,3 | 50 |
-| Linear na lista de IDs | 25.835 | 25,8 | 50 |
-| Binária na lista de IDs | 9.342 | 9,3 | 12 |
+| Linear na lista do arquivo (10.000 leituras) | 25.127 | 25,13 | 50 |
+| Linear na lista de IDs | 25.835 | 25,84 | 50 |
+| **Binária na lista de IDs ordenada** | **8.788** | **8,79** | **11** |
 
-Primeira leitura com 5 alertas (50 escadas):
+A tabela de cada consulta está em `saidas/comparacoes_consultas.csv`.
 
-- 20 escadas chegam a 5 alertas e 30 não chegam.
-- Busca linear: 6.828 comparações.
-- Busca binária: 390 comparações.
+### Parte B - primeira leitura com 5 alertas acumulados
 
-A tabela por escada está no notebook e em `saidas/comparacoes_primeira_leitura.csv`.
+Para cada escada, as 200 leituras (em ordem de horário) viram 0 ou 1 (alerta ou não).
+
+- **Linear (`primeira_leitura_linear`):** soma os alertas um a um até chegar a 5.
+- **Binária (`primeira_leitura_binaria`):** a soma acumulada nunca diminui, ou seja, é uma lista ordenada. A binária acha a primeira posição em que ela vale 5 ou mais.
+
+O código confere se as duas buscas acham a mesma posição em todas as escadas.
+
+| | Comparações (50 escadas) |
+|---|---|
+| Busca linear | 6.850 |
+| Busca binária | 392 |
+| Passos para montar a soma acumulada (a binária precisa dela) | 10.000 |
+
+20 escadas chegam a 5 alertas e 30 não chegam. A tabela por escada (posição, data e hora, comparações) está no notebook e em `saidas/comparacoes_primeira_leitura.csv`.
 
 ### Interpretação
 
-A busca binária faz cerca de um terço das comparações da linear na mesma lista de IDs, e a diferença cresce com o tamanho da lista. Isso acontece porque ela descarta metade dos candidatos a cada passo, enquanto a linear olha um item por vez.
+- **Por ID, a binária faz ≈3× menos comparações** (8,8 contra 25,8 na mesma lista). Isso bate com a teoria: log₂(50) ≈ 5,6 passos, com 2 comparações cada → no máximo 11–12. A linear olha, em média, metade da lista. A diferença cresce com o tamanho: com 197 escadas, a linear iria a ≈99 de média e a binária só a ≈14.
+- **A linear no arquivo** tem média parecida com a linear nos IDs. Isso acontece porque a primeira hora do arquivo já tem todas as 50 escadas (embaralhadas), então qualquer ID aparece nas 50 primeiras linhas. Esse número depende do arquivo, não só do algoritmo.
+- **Primeira leitura com 5 alertas:** a binária faz ≈8 comparações por escada, contra até 200 da linear. Mas ela só funciona porque antes montamos a soma acumulada, que custa 1 passo por leitura. Se a pergunta for feita **uma vez só**, a linear sai mais barata, porque para assim que chega a 5. A binária compensa quando a mesma soma é consultada várias vezes (por exemplo, "quando chegou a 5? e a 10? e a 20?").
+- **Erro que encontramos e corrigimos:** a binária só funciona se a lista estiver ordenada **pelo mesmo critério da comparação**. Na primeira versão, os IDs não tinham zeros (`ESC-2`, `ESC-10`). A lista estava ordenada pelo número, mas o `<` compara texto, e `"ESC-10" < "ESC-2"`. Resultado: a binária não achava 10 das 50 escadas, e a tabela de comparações estava errada. A correção foi usar IDs com 3 dígitos (`ESC-002`, `ESC-010`), que deixam a ordem do texto igual à do número, e conferir cada resultado no `main.py`. O teste `test_acha_todos_os_ids_do_dataset` garante que isso não volta.
 
-A linear no arquivo de leituras tem média parecida com a linear na lista de IDs. Isso acontece porque o arquivo embaralha as escadas a cada hora, então a primeira ocorrência de cada escada cai nas primeiras 50 linhas. Esse número depende do arquivo, não só do algoritmo.
+---
 
-## Percurso na linha com pilha
+## Atividade 2 - Percurso na linha com pilha
 
-### O problema
+### Linha (`linha.csv`)
 
-Uma equipe sai da base, em Luz, vai até uma estação para dar manutenção e volta. Precisamos saber quanto tempo cada atendimento leva de ida e volta, e qual é a rota de cada um.
-
-### Premissas
-
-A linha tem 8 estações, na ordem abaixo. Os minutos entre estações são premissas do grupo, guardadas em `linha.csv`:
+As 11 estações da Linha 4-Amarela, na ordem. Os minutos até a estação seguinte são **premissas do grupo**. A base é **Luz**, na primeira posição.
 
 | Trecho | Minutos |
 |---|---|
-| Luz → República | 3 |
-| República → Paulista | 3 |
+| Luz → República | 2 |
+| República → Higienópolis-Mackenzie | 2 |
+| Higienópolis-Mackenzie → Paulista | 2 |
 | Paulista → Oscar Freire | 2 |
-| Oscar Freire → Faria Lima | 3 |
-| Faria Lima → Pinheiros | 3 |
+| Oscar Freire → Fradique Coutinho | 2 |
+| Fradique Coutinho → Faria Lima | 2 |
+| Faria Lima → Pinheiros | 2 |
 | Pinheiros → Butantã | 3 |
-| Butantã → Vila Sônia | 3 |
-
-A base é Luz, que fica na primeira posição da linha. Como a equipe volta à base, o tempo de ida e volta é sempre o dobro do tempo de ida.
+| Butantã → São Paulo-Morumbi | 3 |
+| São Paulo-Morumbi → Vila Sônia | 3 |
 
 ### Método
 
-- **Tempo até a estação** (`tempo_ate`): busca linear pela estação, somando os minutos de cada trecho até chegar nela.
-- **Rota de ida e volta** (`rota_ida_e_volta`): usa uma pilha, que é uma estrutura do tipo "o último que entra é o primeiro que sai".
-  - Na **ida**, cada estação visitada é empilhada com `append`, até chegar ao destino.
-  - Na **volta**, as estações são desempilhadas com `pop()`, começando no destino e terminando na base.
+- **`tempo_ate(linha, estacao)`:** busca linear pela estação, somando os minutos de cada trecho desde a base.
+- **`rota_ida_e_volta(linha, estacao)`:** usa uma pilha ("o último que entra é o primeiro que sai").
+  - **Ida:** cada estação visitada é empilhada com `append`, até o destino.
+  - **Volta:** as estações são desempilhadas com `pop()`, do destino até a base. Os minutos da volta são somados durante o `pop()`, trecho por trecho.
 
-Usamos pilha porque a volta precisa percorrer exatamente a ida na ordem inversa. A pilha faz isso naturalmente, sem precisar inverter a lista.
-
-### Resultados
+### Resultado (`saidas/tempos_base.csv`)
 
 | Estação | Ida (min) | Ida e volta (min) |
 |---|---|---|
 | Luz (base) | 0 | 0 |
-| República | 3 | 6 |
+| República | 2 | 4 |
+| Higienópolis-Mackenzie | 4 | 8 |
 | Paulista | 6 | 12 |
 | Oscar Freire | 8 | 16 |
-| Faria Lima | 11 | 22 |
+| Fradique Coutinho | 10 | 20 |
+| Faria Lima | 12 | 24 |
 | Pinheiros | 14 | 28 |
 | Butantã | 17 | 34 |
-| Vila Sônia | 20 | 40 |
+| São Paulo-Morumbi | 20 | 40 |
+| Vila Sônia | 23 | 46 |
 
-A rota de volta de Vila Sônia, por exemplo, é Vila Sônia → Butantã → Pinheiros → Faria Lima → Oscar Freire → Paulista → República → Luz.
-
-## Plano do turno com fila e pilha
-
-### O problema
-
-Cada turno tem tempo limitado. Precisamos decidir quais escadas em alerta serão atendidas no turno, na ordem certa, e quais ficam para depois.
-
-### Escadas em alerta
-
-Uma escada entra no plano se tiver pelo menos uma leitura em alerta. Para cada uma, consideramos a estação, o grupo e a data do primeiro alerta. Ao todo, são 20 escadas.
-
-### Custo de cada atendimento
-
-Cada atendimento custa:
-
-**custo = tempo de ida e volta + tempo de serviço**
-
-Premissas de tempo de serviço, também do grupo:
-
-- **Crítica:** 60 minutos de serviço.
-- **Não crítica:** 40 minutos de serviço.
-
-Com as premissas acima, o custo de cada atendimento fica entre **46 e 94 minutos**.
-
-### Filas
-
-As escadas são organizadas em duas filas, na ordem do primeiro alerta (ou seja, a que alertou antes é atendida antes):
-
-- **Fila crítica:** atendida primeiro (`pop(0)`). Esse é o critério de prioridade.
-- **Fila normal:** atendida só depois que a fila crítica acabar.
-
-Usamos fila porque o atendimento segue a ordem de chegada dentro de cada grupo: quem alertou primeiro é atendido primeiro.
-
-### Planejamento do turno
-
-A função `planejar_turno(base, horas)` gera o plano. Ela lê sozinha a linha (`linha.csv`) e as escadas em alerta (`sensores.csv`), mas também aceita esses dados como argumentos opcionais. Assim, os testes podem usar dados de exemplo, sem depender dos arquivos.
-
-O turno tem 4, 6 ou 8 horas, ou seja, 240, 360 ou 480 minutos. Para cada escada, na ordem das filas:
-
-1. calculamos o custo;
-2. se o custo cabe no tempo que ainda resta, a escada entra na **agenda** e registramos o horário de início e de fim;
-3. se não cabe, a escada vai para **pendentes**, e tentamos a próxima.
-
-A agenda guarda a ordem de atendimento e a rota de ida de cada um.
-
-### Perda de uma hora
-
-Simulamos o caso de a equipe perder 1 hora do turno, por qualquer motivo. A função `perder_hora` remove atendimentos da agenda usando `pop()`, sempre do último que entrou, até o plano caber no novo limite. As escadas removidas vão para o fim dos pendentes.
-
-Desfazemos pelo último a entrar porque, como a agenda segue a ordem de prioridade, os últimos são os de menor prioridade. O plano original não é alterado, então é possível comparar o antes e o depois.
-
-### Resultados
-
-| Turno | Na agenda | Pendentes | Tempo usado | Se perder 1 h: na agenda |
-|---|---|---|---|---|
-| 4 h (240 min) | 3 | 17 | 214 min | 2 |
-| 6 h (360 min) | 5 | 15 | 342 min | 4 |
-| 8 h (480 min) | 6 | 14 | 456 min | 5 |
+Exemplo de volta (Vila Sônia): Vila Sônia → São Paulo-Morumbi → Butantã → Pinheiros → Faria Lima → Fradique Coutinho → Oscar Freire → Paulista → Higienópolis-Mackenzie → República → Luz.
 
 ### Interpretação
 
-Com 20 escadas em alerta e custo de 46 a 94 minutos cada, o turno de 8 horas atende só 6. A maioria das escadas fica pendente em todos os cenários. Isso mostra que o gargalo é a **capacidade do turno**, não a ordem de atendimento. Com as premissas atuais, a equipe não consegue atender todas as escadas em alerta em um único turno.
+A pilha devolve a volta exatamente na ordem inversa da ida, sem precisar inverter a lista: o destino, último a entrar, é o primeiro a sair. Como os trechos são iguais nos dois sentidos, a volta leva o mesmo tempo da ida. Ir até Vila Sônia e voltar custa 46 min só de deslocamento, quase o tempo de um serviço normal (40 min). Isso pesa bastante no plano do turno.
 
-### Por que o planejamento continua depois de uma escada que não cabe
+---
 
-Essa foi uma decisão de regra, e ela tem um efeito que precisa ser conhecido. Quando uma escada não cabe no tempo restante, pulamos para a próxima da fila. A alternativa seria parar na primeira que não cabe. Escolhemos continuar porque parar desperdiçaria o tempo que sobra, que pode ser usado por uma escada menor.
+## Atividade 3 - Plano do turno com fila e pilha
 
-O efeito colateral é este: uma escada crítica cara pode ficar pendente enquanto uma crítica mais barata entra. Por isso, a prioridade é de **ordem de atendimento**, não uma garantia de que todas as críticas serão atendidas antes de qualquer normal.
+### Regras (`planejar_turno(base, horas)`, em `turno.py`)
+
+1. As escadas com pelo menos uma leitura em alerta entram em duas filas (listas), **na ordem do primeiro alerta**: `fila_critica` e `fila_normal`.
+2. A fila crítica é atendida antes da normal, retirando com `pop(0)` (fila: o primeiro que entra é o primeiro que sai).
+3. **Custo = ida + serviço + volta**, com serviço de **60 min** (crítica) ou **40 min** (não crítica).
+4. Se o custo cabe no que sobra do turno, a escada vai para a **agenda** (`append`), com horário de início e fim. Se não cabe, vai para **pendentes**, e tentamos a próxima.
+5. **Perda de 1 hora** (`perder_hora`): a agenda é desfeita com `pop()` (pilha: o último agendado sai primeiro) até caber no novo limite. As escadas desfeitas vão para o fim dos pendentes.
+
+Premissas: o turno começa às **08:00**, sem pausas, e a equipe volta à base depois de cada atendimento.
+
+### Escadas em alerta
+
+20 escadas: 10 críticas e 10 não críticas. O custo de cada atendimento vai de 40 min (não crítica na própria base) a 106 min (crítica em Vila Sônia).
+
+### Resultados
+
+| Turno | Na agenda | Pendentes | Tempo usado | Perdendo 1 h: na agenda | Tempo usado (−1 h) |
+|---|---|---|---|---|---|
+| 4 h (240 min) | 3 | 17 | 228 min | 1 | 88 / 180 min |
+| 6 h (360 min) | 4 | 16 | 332 min | 3 | 268 / 300 min |
+| 8 h (480 min) | 6 | 14 | 464 min | 5 | 400 / 420 min |
+
+Agenda do turno de 8 h:
+
+| # | Escada | Grupo | Estação | Custo | Início | Fim |
+|---|---|---|---|---|---|---|
+| 1 | ESC-050 | crítica | Pinheiros | 88 | 08:00 | 09:28 |
+| 2 | ESC-016 | crítica | São Paulo-Morumbi | 100 | 09:28 | 11:08 |
+| 3 | ESC-034 | crítica | Fradique Coutinho | 80 | 11:08 | 12:28 |
+| 4 | ESC-037 | crítica | República | 64 | 12:28 | 13:32 |
+| 5 | ESC-030 | crítica | Higienópolis-Mackenzie | 68 | 13:32 | 14:40 |
+| 6 | ESC-025 | crítica | República | 64 | 14:40 | 15:44 |
+
+A rota de cada atendimento (ida e volta), as agendas de 4 e 6 h e a lista completa de pendentes de cada cenário estão no notebook e em `saidas/planos_turno.csv` (uma linha por escada, com turno, cenário, situação, rota, início e fim).
+
+### Interpretação
+
+- **O gargalo é a capacidade do turno, não a ordem.** Com 20 escadas em alerta e custo de 40 a 106 min, nem o turno de 8 h atende todas as críticas: atende 6 e deixa 14 pendentes (4 delas críticas).
+- **Uma não crítica pode entrar antes de uma crítica.** No turno de 4 h, a ESC-023 (não crítica, na própria base Luz, 40 min) entra na agenda enquanto 8 críticas ficam pendentes. Depois das duas primeiras críticas, sobram 52 min; as outras críticas custam 64 min ou mais e não cabem, mas a ESC-023 cabe. Ou seja, a fila garante a **ordem de tentativa**, não que toda crítica seja atendida antes de qualquer normal. Escolhemos continuar tentando depois de uma escada que não cabe porque parar desperdiçaria o tempo que sobra.
+- **Perda de 1 hora:** o `pop()` tira primeiro o último agendado, que é o de menor prioridade. No turno de 4 h, isso tira duas escadas (ESC-023 e ESC-016), porque tirar só a primeira ainda deixa 188 min, acima dos 180 do novo limite. Sobram 92 min livres, que a regra do enunciado não tenta preencher de novo.
+- **A distância da base pesa.** Escadas em São Paulo-Morumbi e Vila Sônia gastam 40 a 46 min só de deslocamento. Uma segunda base no meio da linha (por exemplo, Paulista ou Pinheiros) reduziria bastante esse custo.
+
+---
 
 ## Premissas do grupo
 
-Estas são suposições do trabalho, não medições. Se mudarem, os resultados das análises de percurso e de turno mudam:
+Estas são suposições do trabalho, não medições. Se mudarem, os resultados das Atividades 2 e 3 mudam:
 
-- Minutos entre estações (tabela da seção de percurso).
+- Minutos entre estações (tabela da Atividade 2).
 - Base em Luz, na primeira posição da linha.
-- Tempo de serviço: 60 min para escadas críticas e 40 min para não críticas.
-- Turno de 4, 6 ou 8 horas, sem pausas.
-- A equipe volta à base após cada atendimento.
-- A perda de 1 hora é simulada, não real.
-- As escadas do dataset são fictícias.
+- Tempo de serviço: 60 min (crítica) e 40 min (não crítica).
+- Turno de 4, 6 ou 8 horas, começando às 08:00, sem pausas.
+- A equipe volta à base depois de cada atendimento.
+- A perda de 1 hora é simulada.
 
 ## Limitações
 
-- Os dados são sintéticos. Os resultados dizem como o método se comporta, não o que acontece na operação real.
+- Os dados são sintéticos: mostram como o método se comporta, não a operação real.
 - Uma única equipe e uma única base.
-- O tempo de serviço é fixo por grupo. Na prática, ele varia com o tipo de falha.
-- A regra de planejamento é gulosa: ela não otimiza a escolha entre escadas. Encontrar a combinação ótima de atendimentos seria outro problema, e não foi o escopo deste trabalho.
-
-## Histórico do projeto (controle de versão)
-
-O projeto foi versionado com Git, e o histórico registra a evolução passo a passo. Cada commit descreve uma parte entregue:
-
-1. Gerador do dataset sintético, com testes de tamanho e de reprodutibilidade.
-2. README inicial.
-3. Regra de alerta e leitura do CSV de sensores, com testes.
-4. Buscas linear e binária e primeira leitura com o limite de alertas, com testes.
-5. Linha de estações, premissas de tempo e rota de ida e volta com pilha, com testes.
-6. Planejamento do turno com filas e pilha, e perda de hora, com testes.
-7. `main.py`, que roda todas as análises e grava os resultados.
-8. Organização dos testes na pasta `tests/`.
+- Tempo de serviço fixo por grupo; na prática, ele varia com o tipo de falha.
+- A regra do turno é gulosa: não procura a melhor combinação de escadas. Encontrar a combinação ótima seria outro problema (parecido com o problema da mochila, que dá para resolver com programação dinâmica numa próxima sprint).
 
 ## Conclusão
 
-A busca binária faz menos comparações que a linear, desde que a lista esteja ordenada. A pilha dá a rota de ida e volta na ordem certa, sem precisar inverter listas. A fila garante a ordem de atendimento dentro de cada grupo.
+A busca binária faz cerca de 3× menos comparações que a linear para achar um ID, e a vantagem cresce com o tamanho da lista, desde que a lista esteja ordenada pelo mesmo critério usado na comparação. A pilha gera a rota de volta na ordem inversa sem precisar inverter listas, e a fila garante a ordem de atendimento dentro de cada grupo.
 
-O resultado mais importante, porém, é o do planejamento: com as premissas atuais, um turno não cobre todas as escadas em alerta. Por isso, antes de qualquer decisão sobre a manutenção preventiva, o próximo passo é validar as premissas de tempo com a equipe de manutenção da Motiva.
+O resultado mais importante é o do planejamento: com as premissas atuais, um turno não cobre todas as escadas em alerta, nem só as críticas. Antes de qualquer decisão, o próximo passo é validar os tempos de deslocamento e de serviço com a equipe de manutenção da Motiva e avaliar uma segunda base.
